@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "src/index.js",
+        "use": "@now/node-server"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/.*",
+        "dest": "src/index.js"
+      }
+    ],
+    "alias": [
+      "home-assignment-server"
+    ],
+    "env": {
+      "PORT": "8181",
+      "CORS_ORIGIN": "*",
+      "IRON_KEY": "iron_secret_QWERTqwert12345!@#$%"
+    }
+  }
