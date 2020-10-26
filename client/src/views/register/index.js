@@ -7,9 +7,10 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { post } from "../../api";
+import Notify from "../../components/alert";
 import { useInput } from "../../hooks";
 import registerStyle from "./styles";
 
@@ -18,17 +19,25 @@ const Register = () => {
   const history = useHistory();
   const [email, setEmail] = useInput("");
   const [password, setPassword] = useInput("");
+  const [message, setMessage] = useState("Failed to login");
+  const [severity, setSeverity] = useState("warning");
+  const [open, setOpen] = useState(false);
 
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const res = await post("/api/register", { email, password });
-      if (res.success) {
+      const { success, message } = await post("/api/register", {
+        email,
+        password,
+      });
+      if (success) {
         history.push("/");
+        setSeverity("success");
       }
-      console.log(res);
+      setMessage(message);
+      setOpen(true);
     } catch (error) {
-      console.error(error);
+      setOpen(true);
     }
   };
 
@@ -80,6 +89,7 @@ const Register = () => {
           </form>
         </CardContent>
       </Card>
+      <Notify message={message} severity={severity} open={open} />
     </Box>
   );
 };
