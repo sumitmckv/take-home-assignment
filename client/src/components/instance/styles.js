@@ -31,7 +31,7 @@ const instanceStyles = makeStyles((theme) => ({
   table: {
     minWidth: 700,
     borderCollapse: "separate",
-    borderSpacing: "0 .5em",
+    borderSpacing: "0 .2em",
   },
   title: {
     marginBottom: theme.spacing(2),

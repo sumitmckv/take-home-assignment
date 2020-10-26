@@ -9,21 +9,36 @@ import {
 import React from "react";
 import { instanceStyles } from "./styles";
 
-const Summary = () => {
+const Summary = ({ instances, isUsd, toggleCurrency }) => {
   const classes = instanceStyles();
+  const summary = instances.reduce(
+    (summary, instance) => {
+      if (instance.status === "running") {
+        summary.running += isUsd
+          ? instance.costPerHour
+          : instance.costPerHourInr;
+      } else {
+        summary.stopped += isUsd
+          ? instance.costPerHour
+          : instance.costPerHourInr;
+      }
+      return summary;
+    },
+    { running: 0, stopped: 0 }
+  );
   return (
     <Card className={classes.summaryRoot}>
       <CardContent className={classes.cardContent}>
         <Box className={classes.summary}>
           <Box className={classes.summaryContent}>
             <Typography variant="h6" className={classes.contentTitle}>
-              $0.19 / hr
+              {(isUsd ? "$" : "₹") + summary.running.toFixed(2)} / hr
             </Typography>
             <Typography>Running Instance</Typography>
           </Box>
           <Box className={classes.summaryContent}>
             <Typography variant="h6" className={classes.contentTitle}>
-              $0.35 / hr
+              {(isUsd ? "$" : "₹") + summary.stopped.toFixed(2)} / hr
             </Typography>
             <Typography>Stopped Instance</Typography>
           </Box>
@@ -33,7 +48,12 @@ const Summary = () => {
             <Grid component="label" container alignItems="center" spacing={1}>
               <Grid item>INR</Grid>
               <Grid item>
-                <Switch checked={true} color="primary" name="checkedC" />
+                <Switch
+                  checked={isUsd}
+                  onChange={toggleCurrency}
+                  color="primary"
+                  name="checkedC"
+                />
               </Grid>
               <Grid item>USD</Grid>
             </Grid>

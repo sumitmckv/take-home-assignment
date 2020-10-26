@@ -2,7 +2,7 @@ const { makeStyles } = require("@material-ui/core");
 
 const loginStyle = makeStyles({
   cardContainer: {
-    marginTop: "15%",
+    marginTop: "25vh",
   },
   itemCenter: {
     display: "flex",

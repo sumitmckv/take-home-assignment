@@ -1,6 +1,7 @@
 import { Container, createMuiTheme, ThemeProvider } from "@material-ui/core";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import ProtectedRoute from "./components/route";
 import Home from "./views/home";
 import Login from "./views/login";
 import Register from "./views/register";
@@ -24,7 +25,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Container maxWidth="xl">
         <Switch>
-          <Route exact path="/" component={Home} />
+          <ProtectedRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
         </Switch>

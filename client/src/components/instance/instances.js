@@ -10,10 +10,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import instances from "../_data";
 import { instanceStyles, InstanceTableCell, InstanceTableRow } from "./styles";
 
-const Instances = () => {
+const Instances = ({ instances, isUsd, onAction }) => {
   const classes = instanceStyles();
 
   return (
@@ -40,7 +39,12 @@ const Instances = () => {
                 <InstanceTableRow key={row.id}>
                   <InstanceTableCell scope="row">{row.id}</InstanceTableCell>
                   <InstanceTableCell align="left">{row.name}</InstanceTableCell>
-                  <InstanceTableCell>{row.costPerHour}</InstanceTableCell>
+                  <InstanceTableCell>
+                    {(isUsd ? "$ " : "₹ ") +
+                      (isUsd
+                        ? row.costPerHour.toFixed(2)
+                        : row.costPerHourInr.toFixed(2))}
+                  </InstanceTableCell>
                   <InstanceTableCell>
                     {row.status === "running" ? (
                       <Typography color="primary">{row.status}</Typography>
@@ -50,9 +54,18 @@ const Instances = () => {
                   </InstanceTableCell>
                   <InstanceTableCell align="right">
                     {row.status !== "running" ? (
-                      <Link className={classes.link}>start</Link>
+                      <Link
+                        className={classes.link}
+                        onClick={() => onAction(row.id, "start")}
+                      >
+                        start
+                      </Link>
                     ) : (
-                      <Link color="error" className={classes.link}>
+                      <Link
+                        color="error"
+                        className={classes.link}
+                        onClick={() => onAction(row.id, "stop")}
+                      >
                         stop
                       </Link>
                     )}
