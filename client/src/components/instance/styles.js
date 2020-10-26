@@ -73,7 +73,7 @@ const InstanceTableRow = withStyles((theme) => ({
 const cardDefaultProps = {
   bgcolor: "background.paper",
   border: 1,
-  borderColor: "text.primary",
+  borderColor: "grey.500",
 };
 
 export {
