@@ -1,8 +1,7 @@
 import {
   Box,
   Button,
-  Card,
-  CardContent,
+  Grid,
   Link,
   TextField,
   Typography,
@@ -19,7 +18,7 @@ const Register = () => {
   const history = useHistory();
   const [email, setEmail] = useInput("");
   const [password, setPassword] = useInput("");
-  const [message, setMessage] = useState("Failed to login");
+  const [message, setMessage] = useState("Failed to register");
   const [severity, setSeverity] = useState("warning");
   const [open, setOpen] = useState(false);
 
@@ -42,9 +41,14 @@ const Register = () => {
   };
 
   return (
-    <Box className={[classes.cardContainer, classes.itemCenter]}>
-      <Card className={classes.root}>
-        <CardContent>
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      className={classes.cardContainer}
+    >
+      <Grid item xs={12} sm={6} lg={4} md={6}>
+        <Box p={4} bgcolor="white" borderRadius={14}>
           <Typography variant="h4" className={classes.itemCenter}>
             Sign up
           </Typography>
@@ -87,10 +91,10 @@ const Register = () => {
               </Link>
             </Box>
           </form>
-        </CardContent>
-      </Card>
+        </Box>
+      </Grid>
       <Notify message={message} severity={severity} open={open} />
-    </Box>
+    </Grid>
   );
 };
 

@@ -63,4 +63,15 @@ const InstanceTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-export { instanceStyles, InstanceTableCell, InstanceTableRow };
+const cardDefaultProps = {
+  bgcolor: "background.paper",
+  border: 1,
+  borderColor: "text.primary",
+};
+
+export {
+  instanceStyles,
+  InstanceTableCell,
+  InstanceTableRow,
+  cardDefaultProps,
+};

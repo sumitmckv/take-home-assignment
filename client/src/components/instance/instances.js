@@ -1,6 +1,6 @@
 import {
-  Card,
-  CardContent,
+  Box,
+  Grid,
   Link,
   Table,
   TableBody,
@@ -10,14 +10,25 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import { instanceStyles, InstanceTableCell, InstanceTableRow } from "./styles";
+import {
+  instanceStyles,
+  InstanceTableCell,
+  InstanceTableRow,
+  cardDefaultProps,
+} from "./styles";
 
 const Instances = ({ instances, isUsd, onAction }) => {
   const classes = instanceStyles();
 
   return (
-    <Card className={classes.root} borderRadius={10}>
-      <CardContent>
+    <Box
+      p={3}
+      bgcolor="white"
+      borderRadius={14}
+      {...cardDefaultProps}
+      className={classes.root}
+    >
+      <Grid container>
         <Typography variant="h5" className={classes.title}>
           Instances
         </Typography>
@@ -75,8 +86,8 @@ const Instances = ({ instances, isUsd, onAction }) => {
             </TableBody>
           </Table>
         </TableContainer>
-      </CardContent>
-    </Card>
+      </Grid>
+    </Box>
   );
 };
 

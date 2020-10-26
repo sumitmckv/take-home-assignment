@@ -1,8 +1,7 @@
 import {
   Box,
   Button,
-  Card,
-  CardContent,
+  Grid,
   Link,
   TextField,
   Typography,
@@ -42,9 +41,14 @@ const Login = () => {
   };
 
   return (
-    <Box className={[classes.cardContainer, classes.itemCenter]}>
-      <Card className={classes.root}>
-        <CardContent>
+    <Grid
+      container
+      justify="center"
+      alignItems="center"
+      className={classes.cardContainer}
+    >
+      <Grid item xs={12} sm={6} lg={4} md={6}>
+        <Box p={4} bgcolor="white" borderRadius={14}>
           <Typography variant="h4" className={classes.itemCenter}>
             Sign in
           </Typography>
@@ -87,10 +91,10 @@ const Login = () => {
               </Link>
             </Box>
           </form>
-        </CardContent>
-      </Card>
-      <Notify message={message} severity={severity} open={open} />
-    </Box>
+        </Box>
+        <Notify message={message} severity={severity} open={open} />
+      </Grid>
+    </Grid>
   );
 };
 
