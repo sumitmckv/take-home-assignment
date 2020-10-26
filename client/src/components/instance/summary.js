@@ -50,7 +50,7 @@ const Summary = ({ instances, isUsd, toggleCurrency }) => {
           </Box>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Grid container direction="row" justify="flex-end">
+          <Grid container direction="row" className={classes.gridItem}>
             <Typography component="div" variant="h6">
               <Grid component="label" container alignItems="center" spacing={1}>
                 <Grid item>INR</Grid>

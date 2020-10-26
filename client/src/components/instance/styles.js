@@ -8,7 +8,6 @@ const {
 const instanceStyles = makeStyles((theme) => ({
   summaryRoot: {
     marginTop: 100,
-    minWidth: "90%",
   },
   cardContent: {
     display: "flex",
@@ -39,6 +38,14 @@ const instanceStyles = makeStyles((theme) => ({
   link: {
     cursor: "pointer",
     textDecoration: "underline",
+  },
+  gridItem: {
+    justifyContent: 'flex-end',
+  },
+  [theme.breakpoints.down('sm')]: {
+    gridItem: {
+        justifyContent: 'center',
+    },
   },
 }));
 
