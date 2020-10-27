@@ -12,12 +12,9 @@ const NavBar = () => {
   const logout = async (e) => {
     e.preventDefault();
     try {
-      const res = await post("/api/logout");
-      if (res.success) {
-        localStorage.removeItem("token");
-        history.push("/login");
-      }
-      console.log(res);
+      await post("/api/logout");
+      localStorage.removeItem("token");
+      history.push("/login");
     } catch (error) {
       console.error(error);
     }

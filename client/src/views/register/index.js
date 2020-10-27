@@ -16,8 +16,8 @@ import registerStyle from "./styles";
 const Register = () => {
   const classes = registerStyle();
   const history = useHistory();
-  const [email, setEmail] = useInput("");
-  const [password, setPassword] = useInput("");
+  const [email, setEmail] = useInput("newuser@gmail.com");
+  const [password, setPassword] = useInput("StrongPassword123");
   const [message, setMessage] = useState("Failed to register");
   const [severity, setSeverity] = useState("warning");
   const [open, setOpen] = useState(false);
@@ -60,6 +60,7 @@ const Register = () => {
               variant="outlined"
               className={classes.loginInputLabel}
               fullWidth
+              value={email}
               onChange={setEmail}
             />
             <Typography variant="subtitle2" gutterBottom>
@@ -70,6 +71,7 @@ const Register = () => {
               variant="outlined"
               className={classes.loginInputLabel}
               fullWidth
+              value={password}
               onChange={setPassword}
             />
             <Box mt={2}>

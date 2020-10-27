@@ -1,9 +1,9 @@
 const BASE_URL = "https://betsol-assignment-api.smtg.vercel.app";
 const fetcher = async (request) => {
-  const token = localStorage.getItem("token");
   if (typeof request === "string") {
     request = new Request(BASE_URL + request);
   }
+  const token = localStorage.getItem("token");
   if (token) {
     request.headers.append("authorization", `Bearer ${token}`);
   }
